@@ -26,8 +26,8 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mlkitsample.R
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.mlkit.md.R
 import com.google.mlkit.md.camera.WorkflowModel
 import com.google.mlkit.md.camera.WorkflowModel.WorkflowState
 

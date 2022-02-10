@@ -21,8 +21,8 @@ import android.graphics.Paint
 import android.graphics.Paint.Style
 import android.graphics.RectF
 import androidx.core.content.ContextCompat
+import com.example.mlkitsample.R
 import com.google.mlkit.md.camera.GraphicOverlay
-import com.google.mlkit.md.R
 import com.google.mlkit.md.camera.CameraReticleAnimator
 
 /**

@@ -21,7 +21,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-//import com.google.mlkit.md.R
+import com.example.mlkitsample.R
 import com.google.mlkit.md.barcodedetection.BarcodeFieldAdapter.BarcodeFieldViewHolder
 
 /** Presents a list of field info in the detected barcode.  */

@@ -19,7 +19,7 @@ package com.google.mlkit.md.productsearch
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Rect
-import com.google.mlkit.md.R
+import com.example.mlkitsample.R
 import com.google.mlkit.md.Utils
 import com.google.mlkit.md.objectdetection.DetectedObjectInfo
 

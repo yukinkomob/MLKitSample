@@ -22,8 +22,8 @@ import android.util.Log
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import android.widget.FrameLayout
+import com.example.mlkitsample.R
 import com.google.android.gms.common.images.Size
-import com.google.mlkit.md.R
 import com.google.mlkit.md.Utils
 import java.io.IOException
 

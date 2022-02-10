@@ -20,8 +20,8 @@ import android.content.Context
 import android.graphics.RectF
 import android.preference.PreferenceManager
 import androidx.annotation.StringRes
+import com.example.mlkitsample.R
 import com.google.android.gms.common.images.Size
-import com.google.mlkit.md.R
 import com.google.mlkit.md.camera.CameraSizePair
 import com.google.mlkit.md.camera.GraphicOverlay
 import com.google.mlkit.vision.barcode.common.Barcode

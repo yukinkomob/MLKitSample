@@ -25,9 +25,9 @@ import android.graphics.PorterDuff
 import android.graphics.PorterDuffXfermode
 import android.graphics.RectF
 import androidx.core.content.ContextCompat
+import com.example.mlkitsample.R
 import com.google.mlkit.md.camera.GraphicOverlay
 import com.google.mlkit.md.camera.GraphicOverlay.Graphic
-import com.google.mlkit.md.R
 import com.google.mlkit.md.settings.PreferenceUtils
 
 internal abstract class BarcodeGraphicBase(overlay: GraphicOverlay) : Graphic(overlay) {

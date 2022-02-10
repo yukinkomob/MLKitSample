@@ -27,6 +27,7 @@ import android.view.View.OnClickListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.example.mlkitsample.R
 import com.google.android.material.chip.Chip
 import com.google.common.base.Objects
 import com.google.mlkit.md.camera.GraphicOverlay
@@ -37,7 +38,7 @@ import com.google.mlkit.md.barcodedetection.BarcodeProcessor
 import com.google.mlkit.md.barcodedetection.BarcodeResultFragment
 import com.google.mlkit.md.camera.CameraSource
 import com.google.mlkit.md.camera.CameraSourcePreview
-import com.google.mlkit.md.settings.SettingsActivity
+//import com.google.mlkit.md.settings.SettingsActivity
 import java.io.IOException
 import java.util.ArrayList
 
@@ -128,7 +129,7 @@ class LiveBarcodeScanningActivity : AppCompatActivity(), OnClickListener {
             }
             R.id.settings_button -> {
                 settingsButton?.isEnabled = false
-                startActivity(Intent(this, SettingsActivity::class.java))
+//                startActivity(Intent(this, SettingsActivity::class.java))
             }
         }
     }
