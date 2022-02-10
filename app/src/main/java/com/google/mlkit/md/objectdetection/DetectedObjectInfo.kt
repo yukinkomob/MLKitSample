@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package google.mlkit.md.objectdetection
+package com.google.mlkit.md.objectdetection
 
 import android.graphics.Bitmap
 import android.graphics.Bitmap.CompressFormat

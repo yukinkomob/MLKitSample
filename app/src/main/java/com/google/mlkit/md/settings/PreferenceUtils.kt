@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package google.mlkit.md.settings
+package com.google.mlkit.md.settings
 
 import android.content.Context
 import android.graphics.RectF

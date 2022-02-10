@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package google.mlkit.md
+package com.google.mlkit.md
 
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.OnCanceledListener
