@@ -20,7 +20,6 @@ import android.app.Application
 import androidx.annotation.MainThread
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.google.mlkit.md.objectdetection.DetectedObjectInfo
 import com.google.mlkit.vision.barcode.common.Barcode
 import java.util.HashSet
 
@@ -35,8 +34,6 @@ class WorkflowModel(application: Application) : AndroidViewModel(application) {
     var isCameraLive = false
         private set
 
-    private var confirmedObject: DetectedObjectInfo? = null
-
     /**
      * State set of the application workflow.
      */
@@ -46,19 +43,10 @@ class WorkflowModel(application: Application) : AndroidViewModel(application) {
         DETECTING, // onResumeでsetFrameProcessor直後
         DETECTED, // barcodeProcessorでonSuccess時
         CONFIRMING, // barcodeProcessorでonSuccess時（サイズが小さい時）
-        CONFIRMED, // confirmingObject()で自動サーチがOFFの時
-        SEARCHING, // confirmingObject()で自動サーチがONの時
-        SEARCHED // WorkflowModelにてonSearchCompleted()
     }
 
     @MainThread
     fun setWorkflowState(workflowState: WorkflowState) {
-        if (workflowState != WorkflowState.CONFIRMED &&
-            workflowState != WorkflowState.SEARCHING &&
-            workflowState != WorkflowState.SEARCHED
-        ) {
-            confirmedObject = null
-        }
         this.workflowState.value = workflowState
     }
 

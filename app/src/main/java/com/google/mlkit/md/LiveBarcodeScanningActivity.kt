@@ -121,10 +121,7 @@ class LiveBarcodeScanningActivity : AppCompatActivity() {
                 WorkflowState.CONFIRMING -> {
                     startCameraPreview()
                 }
-                WorkflowState.SEARCHING -> {
-                    stopCameraPreview()
-                }
-                WorkflowState.DETECTED, WorkflowState.SEARCHED -> {
+                WorkflowState.DETECTED -> {
                     stopCameraPreview()
                 }
                 else -> {}
