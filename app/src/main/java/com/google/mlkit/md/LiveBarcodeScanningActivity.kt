@@ -58,7 +58,7 @@ class LiveBarcodeScanningActivity : AppCompatActivity() {
 
         workflowModel?.markCameraFrozen()
         currentWorkflowState = WorkflowState.NOT_STARTED
-        cameraSource?.setFrameProcessor(BarcodeProcessor(graphicOverlay!!, workflowModel!!))
+        cameraSource?.setFrameProcessor(BarcodeProcessor(workflowModel!!))
         workflowModel?.setWorkflowState(WorkflowState.DETECTING)
     }
 

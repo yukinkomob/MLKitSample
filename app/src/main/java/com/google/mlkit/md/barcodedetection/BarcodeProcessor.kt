@@ -31,7 +31,7 @@ import com.google.mlkit.vision.common.InputImage
 import java.io.IOException
 
 /** A processor to run the barcode detector.  */
-class BarcodeProcessor(graphicOverlay: GraphicOverlay, private val workflowModel: WorkflowModel) :
+class BarcodeProcessor(private val workflowModel: WorkflowModel) :
     FrameProcessorBase<List<Barcode>>() {
 
     private val scanner = BarcodeScanning.getClient()
