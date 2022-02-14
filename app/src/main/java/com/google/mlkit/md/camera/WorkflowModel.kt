@@ -37,12 +37,11 @@ class WorkflowModel(application: Application) : AndroidViewModel(application) {
     /**
      * State set of the application workflow.
      */
-    // 初期 > 検出中 > 検出済み > 確認中 > 確認済み > 検索中 > 検索済み
     enum class WorkflowState {
-        NOT_STARTED, // onResume, onPause
-        DETECTING, // onResumeでsetFrameProcessor直後
-        DETECTED, // barcodeProcessorでonSuccess時
-        CONFIRMING, // barcodeProcessorでonSuccess時（サイズが小さい時）
+        NOT_STARTED,
+        DETECTING,
+        DETECTED,
+        CONFIRMING,
     }
 
     @MainThread

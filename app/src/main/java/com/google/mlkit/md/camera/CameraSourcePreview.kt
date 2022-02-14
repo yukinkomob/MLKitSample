@@ -27,35 +27,29 @@ import com.google.android.gms.common.images.Size
 import com.google.mlkit.md.Utils
 import java.io.IOException
 
-// 撮影成功時のコールバックは？
-// カメラの撮影開始タイミングは？
-// カメラの撮影領域の変更は可能？
-// CameraSourcePreviewの利用準備は？
 /** Preview the camera image in the screen.  */
-// what: カメラソースの管理クラス
 class CameraSourcePreview(context: Context, attrs: AttributeSet) : FrameLayout(context, attrs) {
 
     private val surfaceView: SurfaceView = SurfaceView(context).apply {
         holder.addCallback(SurfaceCallback())
         addView(this)
     }
-    private var graphicOverlay: GraphicOverlay? = null // GraphicOverlayはmlkit
+    private var graphicOverlay: GraphicOverlay? = null
     private var startRequested = false
-    private var surfaceAvailable = false // コールバック（surface作成済み）時にtrue
-    private var cameraSource: CameraSource? = null // start()時に設定
-    private var cameraPreviewSize: Size? = null // onLayoutの時に引数を基に設定
+    private var surfaceAvailable = false
+    private var cameraSource: CameraSource? = null
+    private var cameraPreviewSize: Size? = null
 
-    // when: レイアウトの設定が完了
     override fun onFinishInflate() {
         super.onFinishInflate()
         graphicOverlay = findViewById(R.id.camera_preview_graphic_overlay)
     }
 
     @Throws(IOException::class)
-    fun start(cameraSource: CameraSource) { // CameraSource はどこから？（mlkit）
+    fun start(cameraSource: CameraSource) {
         this.cameraSource = cameraSource
-        startRequested = true // ここでフラグ立ててるのは意味ある？
-        startIfReady() // ここ以外から呼ばれる？ xxxIfyyyはどういう効果？ -> 内部でチェックされることが保証されている
+        startRequested = true
+        startIfReady()
     }
 
     fun stop() {
@@ -68,13 +62,12 @@ class CameraSourcePreview(context: Context, attrs: AttributeSet) : FrameLayout(c
 
     @Throws(IOException::class)
     private fun startIfReady() {
-        if (startRequested && surfaceAvailable) { // IfReady
-            // リクエストあり＆画面利用可能
-            cameraSource?.start(surfaceView.holder) // カメラ開始。holderは何？（SurfaceViewはこのビューの親で、描画用のビュー）
-            requestLayout() // API
+        if (startRequested && surfaceAvailable) {
+            cameraSource?.start(surfaceView.holder)
+            requestLayout()
             graphicOverlay?.let { overlay ->
                 cameraSource?.let {
-                    overlay.setCameraInfo(it) // overlayは何？
+                    overlay.setCameraInfo(it)
                 }
                 overlay.clear()
             }
@@ -88,7 +81,6 @@ class CameraSourcePreview(context: Context, attrs: AttributeSet) : FrameLayout(c
 
         cameraSource?.previewSize?.let { cameraPreviewSize = it }
 
-        // what: 比率を設定
         val previewSizeRatio = cameraPreviewSize?.let { size ->
             if (Utils.isPortraitMode(context)) {
                 // Camera's natural orientation is landscape, so need to swap width and height.
@@ -99,7 +91,6 @@ class CameraSourcePreview(context: Context, attrs: AttributeSet) : FrameLayout(c
         } ?: layoutWidth.toFloat() / layoutHeight.toFloat()
 
         // Match the width of the child view to its parent.
-        // what: 高さを設定
         val childHeight = (layoutWidth / previewSizeRatio).toInt()
         if (childHeight <= layoutHeight) {
             for (i in 0 until childCount) {
@@ -110,7 +101,6 @@ class CameraSourcePreview(context: Context, attrs: AttributeSet) : FrameLayout(c
             // static overlay view container (contains views such as bottom prompt chip), we apply
             // the size of the parent view to it. Otherwise, we offset the top/bottom position
             // equally to position it in the center of the parent.
-            // what: 画面を超過する時の調整
             val excessLenInHalf = (childHeight - layoutHeight) / 2
             for (i in 0 until childCount) {
                 val childView = getChildAt(i)
@@ -134,10 +124,7 @@ class CameraSourcePreview(context: Context, attrs: AttributeSet) : FrameLayout(c
         }
     }
 
-    // how to use: holder（SurfaceView）にインスタンスを設定（引数なし）
     private inner class SurfaceCallback : SurfaceHolder.Callback {
-        // SurfaceViewが作成、破棄、変更時に通知
-        // 作成を契機にカメラ開始
 
         override fun surfaceCreated(surface: SurfaceHolder) {
             surfaceAvailable = true

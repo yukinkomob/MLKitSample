@@ -33,36 +33,33 @@ import com.google.mlkit.md.camera.WorkflowModel.WorkflowState
 import java.io.IOException
 
 /** Demonstrates the barcode scanning workflow using camera preview.  */
-// what is this: 枠のアニメーション、カメラのミラーリング、スキャン時のアニメーション、ステータス文字列の表示、結果ビューの表示
 class LiveBarcodeScanningActivity : AppCompatActivity() {
 
     private var cameraSource: CameraSource? = null
     private var preview: CameraSourcePreview? = null
-    private var graphicOverlay: GraphicOverlay? = null // MLKit
-    private var workflowModel: WorkflowModel? = null // MLKit
-    private var currentWorkflowState: WorkflowState? = null // MLKit
+    private var graphicOverlay: GraphicOverlay? = null
+    private var workflowModel: WorkflowModel? = null
+    private var currentWorkflowState: WorkflowState? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_live_barcode)
         preview = findViewById(R.id.camera_preview)
-        // オーバーレイ表示（スケーリングとミラーリングを担当）
         graphicOverlay = findViewById<GraphicOverlay>(R.id.camera_preview_graphic_overlay).apply {
-            cameraSource = CameraSource(this) // カメラ設定
+            cameraSource = CameraSource(this)
         }
 
-        // ワークフローの設定
         setUpWorkflowModel()
     }
 
     override fun onResume() {
         super.onResume()
 
-        workflowModel?.markCameraFrozen() // カメラのライブを停止
-        currentWorkflowState = WorkflowState.NOT_STARTED // 状態遷移
-        cameraSource?.setFrameProcessor(BarcodeProcessor(graphicOverlay!!, workflowModel!!)) // デコードを開始？
-        workflowModel?.setWorkflowState(WorkflowState.DETECTING) // 状態遷移
+        workflowModel?.markCameraFrozen()
+        currentWorkflowState = WorkflowState.NOT_STARTED
+        cameraSource?.setFrameProcessor(BarcodeProcessor(graphicOverlay!!, workflowModel!!))
+        workflowModel?.setWorkflowState(WorkflowState.DETECTING)
     }
 
     override fun onPause() {
@@ -100,7 +97,6 @@ class LiveBarcodeScanningActivity : AppCompatActivity() {
         }
     }
 
-    // what: ViewModel
     private fun setUpWorkflowModel() {
         workflowModel = ViewModelProviders.of(this).get(WorkflowModel::class.java)
 
@@ -128,7 +124,6 @@ class LiveBarcodeScanningActivity : AppCompatActivity() {
             }
         })
 
-        // バーコード検出を監視
         workflowModel?.detectedBarcode?.observe(this, Observer { barcode ->
             if (barcode != null) {
                 Toast.makeText(this, barcode.rawValue, Toast.LENGTH_SHORT).show()
