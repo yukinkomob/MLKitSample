@@ -6,15 +6,19 @@
         <entry key="../../../../layout/custom_preview.xml" value="0.2171875" />
         <entry key="app/src/main/res/drawable-v24/barcode_field_box.xml" value="0.225" />
         <entry key="app/src/main/res/drawable-v24/camera_flash.xml" value="0.225" />
+        <entry key="app/src/main/res/drawable-v24/ic_close_vd_white_24.xml" value="0.225" />
         <entry key="app/src/main/res/drawable-v24/ic_flash_off_vd_white_24.xml" value="0.225" />
         <entry key="app/src/main/res/drawable-v24/ic_image_search_vd_black_24.xml" value="0.225" />
         <entry key="app/src/main/res/drawable-v24/top_action_bar_scrim.xml" value="0.225" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.20677083333333332" />
         <entry key="app/src/main/res/layout/activity_live_barcode.xml" value="0.2675925925925926" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1765625" />
         <entry key="app/src/main/res/layout/barcode_bottom_sheet.xml" value="0.34427083333333336" />
         <entry key="app/src/main/res/layout/barcode_field.xml" value="0.20885416666666667" />
         <entry key="app/src/main/res/layout/camera_preview_overlay.xml" value="0.20885416666666667" />
+        <entry key="app/src/main/res/layout/fragment_live_barcode.xml" value="0.190625" />
         <entry key="app/src/main/res/layout/top_action_bar_in_live_camera.xml" value="0.20885416666666667" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.20677083333333332" />
       </map>
     </option>
   </component>
