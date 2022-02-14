@@ -16,12 +16,4 @@
 
   </com.google.mlkit.md.camera.CameraSourcePreview>
 
-  <!-- 非表示 -->
-  <include
-      layout="@layout/top_action_bar_in_live_camera"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_gravity="top"
-      android:visibility="invisible"/>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
