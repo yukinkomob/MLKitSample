@@ -1,10 +1,12 @@
 package com.google.mlkit.md
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -37,6 +39,9 @@ class LiveBarcodeScanningFragment : Fragment() {
             cameraSource = CameraSource(this)
         }
         setUpWorkflowModel()
+        view.findViewById<Button>(R.id.restart).setOnClickListener {
+            goToBarcodeActivity()
+        }
         return view
     }
 
@@ -59,6 +64,11 @@ class LiveBarcodeScanningFragment : Fragment() {
         super.onDestroy()
         cameraSource?.release()
         cameraSource = null
+    }
+
+    private fun goToBarcodeActivity() {
+        val intent = Intent(activity, LiveBarcodeScanningActivity::class.java)
+        startActivity(intent)
     }
 
     private fun startCameraPreview() {
